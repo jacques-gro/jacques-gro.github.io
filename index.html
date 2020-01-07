@@ -130,10 +130,8 @@
 
 
       public class Neutron{
-
        float xVel,yVel,nSize;
        float x,y;
-
         public Neutron(){
           x=random(585,615);                                                                            //horizontal middle of screen
           y=random(385,415);
@@ -149,31 +147,20 @@
           fill(100,100,100);
           ellipse(x,y,nSize,nSize);
         }
-
         public void update(){
          x+=xVel;
          y+=yVel;
          fill(100,100,100);
          ellipse(x,y,nSize, nSize);
         }
-
-
         public void barrierCheckNeutron(int r){
           if(sqrt(pow((x-width/2),2) + pow((y-height/2),2))>=r){                //distance formula is less than the sum of two radii, means there is a collison
-
              xVel*=-1;
              yVel*=-1;
-
-
            }
-
-
-
-
-
         }
-
       }
+
 
 
 
