@@ -48,42 +48,42 @@
       }
 
 
-      public void draw(){
-       background(0);
-       text("Protons: "+pcount,width-200, 70);
-       text("Neutrons: "+ncount,width-221, 100);
-       if(keyPressed){
-         if(keyCode==UP&&pcount<120){
-           pcount++;
-           protonArray = new Proton[pcount];
-           for(int i=0; i<protonArray.length; i++){
-           protonArray[i] = new Proton();
-           }
-
-          }
-        else if(keyCode==DOWN&&pcount>0){
-           pcount--;
-           protonArray = new Proton[pcount];
-           for(int i=0; i<protonArray.length; i++){
-           protonArray[i] = new Proton();
-           }
-          }
-
-        if(key=='w'&&ncount<120){
-           ncount++;
-           neutronArray = new Neutron[ncount];
-           for(int i=0; i<neutronArray.length; i++){
-           neutronArray[i] = new Neutron();    
-           }
-         }
-        else if(key=='s'&&ncount>0){
-           ncount--;
-           neutronArray = new Neutron[ncount];
-           for(int i=0; i<neutronArray.length; i++){
-           neutronArray[i] = new Neutron();    
-           }
-         }
+        public void draw(){
+   background(0);
+   text("Protons: "+pcount,width-200, 70);
+   text("Neutrons: "+ncount,width-221, 100);
+   if(keyPressed){
+     if(keyCode==UP&&pcount<120){
+       pcount++;
+       protonArray = new Proton[pcount];
+       for(int i=0; i<protonArray.length; i++){
+       protonArray[i] = new Proton();
        }
+
+      }
+    else if(keyCode==DOWN&&pcount>0){
+       pcount--;
+       protonArray = new Proton[pcount];
+       for(int i=0; i<protonArray.length; i++){
+       protonArray[i] = new Proton();
+       }
+      }
+
+  if(key=='w'&&ncount<120){
+     ncount++;
+     neutronArray = new Neutron[ncount];
+     for(int i=0; i<neutronArray.length; i++){
+     neutronArray[i] = new Neutron();    
+     }
+   }
+  else if(key=='s'&&ncount>0){
+     ncount--;
+     neutronArray = new Neutron[ncount];
+     for(int i=0; i<neutronArray.length; i++){
+     neutronArray[i] = new Neutron();    
+     }
+   }
+ }
 
         numberx+=.05;
         numbery+=.05;
