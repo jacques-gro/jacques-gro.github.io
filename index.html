@@ -16,197 +16,197 @@
     
     <script type="text/processing">
     
-Proton protonArray[];
-Neutron neutronArray[];
+      Proton protonArray[];
+      Neutron neutronArray[];
 
 
 
-int  pcount=0;
-int  ecount=0;
-int  ncount=0;
-float numberx;
-float numbery;
-public void setup(){
-   size(1200,800);
-   background(100,100,100);
-   fill(255);
-   textSize(30);
-
-   
-   protonArray = new Proton[pcount];
-     for(int i=0; i<protonArray.length; i++){
-     protonArray[i] = new Proton();
-     }
-     
-   neutronArray = new Neutron[ncount];
-     for(int i=0; i<neutronArray.length; i++){
-     neutronArray[i] = new Neutron();    
-     }
+      int  pcount=0;
+      int  ecount=0;
+      int  ncount=0;
+      float numberx;
+      float numbery;
+      public void setup(){
+         size(1200,800);
+         background(100,100,100);
+         fill(255);
+         textSize(30);
 
 
+         protonArray = new Proton[pcount];
+           for(int i=0; i<protonArray.length; i++){
+           protonArray[i] = new Proton();
+           }
 
-}
-
-
-public void draw(){
- background(0);
- text("Protons: "+pcount,width-200, 70);
- text("Neutrons: "+ncount,width-221, 100);
- if(keyPressed){
-   if(keyCode==UP&&pcount<120){
-     pcount++;
-     protonArray = new Proton[pcount];
-     for(int i=0; i<protonArray.length; i++){
-     protonArray[i] = new Proton();
-     }
-       
-    }
-  else if(keyCode==DOWN&&pcount>0){
-     pcount--;
-     protonArray = new Proton[pcount];
-     for(int i=0; i<protonArray.length; i++){
-     protonArray[i] = new Proton();
-     }
-    }
-   
-  if(key=='w'&&ncount<120){
-     ncount++;
-     neutronArray = new Neutron[ncount];
-     for(int i=0; i<neutronArray.length; i++){
-     neutronArray[i] = new Neutron();    
-     }
-   }
-  else if(key=='s'&&ncount>0){
-     ncount--;
-     neutronArray = new Neutron[ncount];
-     for(int i=0; i<neutronArray.length; i++){
-     neutronArray[i] = new Neutron();    
-     }
-   }
- }
-
-  numberx+=.05;
-  numbery+=.05;
-  for(Proton p: protonArray){
-    p.update();
-    p.barrierCheckProton(40);    
-  }
-  for(Neutron n: neutronArray){
-    n.update();
-    n.barrierCheckNeutron(40);    
-  }
-
- float X =  cos(numberx)*100;
- float Y =  sin(numbery)*100;
- fill(70,70,255);
- translate(width/2,height/2);
- ellipse(-X,-Y,10,10);
- ellipse(X,Y,10,10);
- 
- float X2 =-600 + cos(numberx)*100;
- float Y2 =-400 + sin(numbery)*100;
- fill(70,70,255);
- translate(width/2,height/2);
-for(int i=0; i<8; i++){
- 
- ellipse((-600 + cos(numberx-0.78539816339*i)*150),(-400+sin(numbery-0.78539816339*i)*150),10,10);
-
-}
- 
-for(int i=0; i<18; i++){
- 
- ellipse((-600 + cos(numberx-0.34906585039*i)*200),(-400+sin(numbery-0.34906585039*i)*200),10,10);
-
-}
-
-for(int i=31; i<32; i++){
- 
- ellipse((-600 + cos(numberx-0.19634954084*i)*250),(-400+sin(numbery-0.19634954084*i)*250),10,10);
-
-}
- 
-}
-
-public class Neutron{
- 
- float xVel,yVel,nSize;
- float x,y;
- 
-  public Neutron(){
-    x=random(585,615);                                                                            //horizontal middle of screen
-    y=random(385,415);
-    xVel=random(-5,5);
-    yVel=random(-5,5);
-    while(xVel==0){
-      xVel=random(-5,5);  
-    }
-    while(yVel==0){
-      yVel=random(-5,5);
-    }
-    nSize=10;
-    fill(100,100,100);
-    ellipse(x,y,nSize,nSize);
-  }
- 
-  public void update(){
-   x+=xVel;
-   y+=yVel;
-   fill(100,100,100);
-   ellipse(x,y,nSize, nSize);
-  }
- 
- 
-  public void barrierCheckNeutron(int r){
-    if(sqrt(pow((x-width/2),2) + pow((y-height/2),2))>=r){                //distance formula is less than the sum of two radii, means there is a collison
-     
-       xVel*=-1;
-       yVel*=-1;
-
-     
-     }
- 
-   
- 
- 
- 
-  }
- 
-}
+         neutronArray = new Neutron[ncount];
+           for(int i=0; i<neutronArray.length; i++){
+           neutronArray[i] = new Neutron();    
+           }
 
 
-public class Proton{
- 
- float xVel,yVel,nSize;
- float x,y;
- 
-  public Proton(){
-    x=random(585,615);                                                                            //horizontal middle of screen
-    y=random(385,415);
-    xVel=random(-5,5);
-    yVel=random(-5,5);
-    while(xVel==0){
-      xVel=random(-5,5);  
-    }
-    while(yVel==0){
-      yVel=random(-5,5);
-    }
-    nSize=10;
-    fill(255,0,0);
-    ellipse(x,y,nSize,nSize);
-  }
- 
-  public void update(){
-   x+=xVel;
-   y+=yVel;
-   fill(255,0,0);
-   ellipse(x,y,nSize, nSize);
-  }
- 
- 
-  public void barrierCheckProton(int r){
-    </script>
-    <canvas id="sketch" style="border: 1px solid black;"></canvas>
-    
+
+      }
+
+
+      public void draw(){
+       background(0);
+       text("Protons: "+pcount,width-200, 70);
+       text("Neutrons: "+ncount,width-221, 100);
+       if(keyPressed){
+         if(keyCode==UP&&pcount<120){
+           pcount++;
+           protonArray = new Proton[pcount];
+           for(int i=0; i<protonArray.length; i++){
+           protonArray[i] = new Proton();
+           }
+
+          }
+        else if(keyCode==DOWN&&pcount>0){
+           pcount--;
+           protonArray = new Proton[pcount];
+           for(int i=0; i<protonArray.length; i++){
+           protonArray[i] = new Proton();
+           }
+          }
+
+        if(key=='w'&&ncount<120){
+           ncount++;
+           neutronArray = new Neutron[ncount];
+           for(int i=0; i<neutronArray.length; i++){
+           neutronArray[i] = new Neutron();    
+           }
+         }
+        else if(key=='s'&&ncount>0){
+           ncount--;
+           neutronArray = new Neutron[ncount];
+           for(int i=0; i<neutronArray.length; i++){
+           neutronArray[i] = new Neutron();    
+           }
+         }
+       }
+
+        numberx+=.05;
+        numbery+=.05;
+        for(Proton p: protonArray){
+          p.update();
+          p.barrierCheckProton(40);    
+        }
+        for(Neutron n: neutronArray){
+          n.update();
+          n.barrierCheckNeutron(40);    
+        }
+
+       float X =  cos(numberx)*100;
+       float Y =  sin(numbery)*100;
+       fill(70,70,255);
+       translate(width/2,height/2);
+       ellipse(-X,-Y,10,10);
+       ellipse(X,Y,10,10);
+
+       float X2 =-600 + cos(numberx)*100;
+       float Y2 =-400 + sin(numbery)*100;
+       fill(70,70,255);
+       translate(width/2,height/2);
+      for(int i=0; i<8; i++){
+
+       ellipse((-600 + cos(numberx-0.78539816339*i)*150),(-400+sin(numbery-0.78539816339*i)*150),10,10);
+
+      }
+
+      for(int i=0; i<18; i++){
+
+       ellipse((-600 + cos(numberx-0.34906585039*i)*200),(-400+sin(numbery-0.34906585039*i)*200),10,10);
+
+      }
+
+      for(int i=31; i<32; i++){
+
+       ellipse((-600 + cos(numberx-0.19634954084*i)*250),(-400+sin(numbery-0.19634954084*i)*250),10,10);
+
+      }
+
+      }
+
+      public class Neutron{
+
+       float xVel,yVel,nSize;
+       float x,y;
+
+        public Neutron(){
+          x=random(585,615);                                                                            //horizontal middle of screen
+          y=random(385,415);
+          xVel=random(-5,5);
+          yVel=random(-5,5);
+          while(xVel==0){
+            xVel=random(-5,5);  
+          }
+          while(yVel==0){
+            yVel=random(-5,5);
+          }
+          nSize=10;
+          fill(100,100,100);
+          ellipse(x,y,nSize,nSize);
+        }
+
+        public void update(){
+         x+=xVel;
+         y+=yVel;
+         fill(100,100,100);
+         ellipse(x,y,nSize, nSize);
+        }
+
+
+        public void barrierCheckNeutron(int r){
+          if(sqrt(pow((x-width/2),2) + pow((y-height/2),2))>=r){                //distance formula is less than the sum of two radii, means there is a collison
+
+             xVel*=-1;
+             yVel*=-1;
+
+
+           }
+
+
+
+
+
+        }
+
+      }
+
+
+      public class Proton{
+
+       float xVel,yVel,nSize;
+       float x,y;
+
+        public Proton(){
+          x=random(585,615);                                                                            //horizontal middle of screen
+          y=random(385,415);
+          xVel=random(-5,5);
+          yVel=random(-5,5);
+          while(xVel==0){
+            xVel=random(-5,5);  
+          }
+          while(yVel==0){
+            yVel=random(-5,5);
+          }
+          nSize=10;
+          fill(255,0,0);
+          ellipse(x,y,nSize,nSize);
+        }
+
+        public void update(){
+         x+=xVel;
+         y+=yVel;
+         fill(255,0,0);
+         ellipse(x,y,nSize, nSize);
+        }
+
+
+        public void barrierCheckProton(int r){
+          </script>
+          <canvas id="sketch" style="border: 1px solid black;"></canvas>
+
   </body>
   
 </html>
