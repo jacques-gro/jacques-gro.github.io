@@ -127,6 +127,8 @@
 
       }
 
+
+
       public class Neutron{
 
        float xVel,yVel,nSize;
@@ -174,6 +176,8 @@
       }
 
 
+
+
       public class Proton{
 
        float xVel,yVel,nSize;
@@ -201,6 +205,26 @@
          fill(255,0,0);
          ellipse(x,y,nSize, nSize);
         }
+
+
+        public void barrierCheckProton(int r){
+          if(sqrt(pow((x-width/2),2) + pow((y-height/2),2))>=r){                //distance formula is less than the sum of two radii, means there is a collison
+
+             xVel*=-1;
+             yVel*=-1;
+
+
+           }
+
+
+
+
+
+        }
+
+      }
+
+
 
 
         
